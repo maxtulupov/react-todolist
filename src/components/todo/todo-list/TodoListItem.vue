@@ -14,9 +14,13 @@
     store.commit('toggleDone', props.id)
   }
 
+  const checkTodos = () => {
+    return store.getters.allTodos.find((item: Todo) => item.id === props.id).done ? true : false;
+  }
+
 </script>
 <template>
-  <li class="flex justify-between items-center bg-slate-100 px-4 py-2 rounded-md">
+  <li class="flex justify-between items-center bg-slate-100 px-4 py-2 rounded-md" v-bind:class="{ done: checkTodos() }">
     <span class="left font-semibold">
       {{ props.text }}
     </span>
@@ -30,5 +34,19 @@
 <style scoped>
   li:not(:last-child) {
     margin: 0px 0px 15px 0px;
+  }
+  li.done {
+    position: relative;
+    opacity: 0.6;
+  }
+  li.done:before {
+    content: '';
+    width:95%;
+    height: 2px;
+    @apply bg-black;
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
   }
 </style>
