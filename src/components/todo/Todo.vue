@@ -12,7 +12,9 @@
   const inputValue = ref('');
 
   const handelSubmit = () => {
-    if (inputValue.value === '') return
+    if (inputValue.value === '') {
+      return
+    }
     store.commit('addTodo', {
       id: getRandomInt(),
       text: inputValue.value,

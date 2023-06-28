@@ -20,5 +20,5 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  @apply bg-zinc-800 p-14;
+  @apply bg-zinc-800 p-4 lg:p-14;
 }
